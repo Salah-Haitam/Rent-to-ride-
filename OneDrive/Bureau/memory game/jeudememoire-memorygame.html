@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+    <!-- Ajout de jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        /* Styles globaux */
+        body {
+            margin: 0;
+            color: #4d4d4d;
+            font-family: 'Open Sans', sans-serif;
+            letter-spacing: 1px;
+            font-weight: 300;
+            font-size: 15px;
+        }
+
+        h1 {
+            color: white;
+            font-family: 'Comfortaa', cursive;
+            letter-spacing: 3px;
+            font-size: 42px;
+            text-align: center;
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 80px;
+            margin: 5px 0 0;
+        }
+
+        h3 {
+            font-size: 28px;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            background-color: lightpink;
+            padding: 0px 8px 0px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #new-game-button {
+            text-decoration: none;
+            color: white;
+            margin-top: 40px;
+            padding: 12px 15px;
+            border: 1px solid;
+            border-radius: 5px;
+            box-shadow: 0px 0px 3px white;
+        }
+
+        #new-game-button:hover {
+            background-color: white;
+            color: lightpink;
+            margin-top: 40px;
+            padding: 12px 15px;
+            border: 1px solid white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px 2px white;
+        }
+
+        #game-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 8px 30px;
+        }
+
+        #game-container.hidden {
+            display: none;
+        }
+
+        #game {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            max-width: 900px;
+            perspective: 800px;
+        }
+
+        .game-card {
+            height: 180px;
+            width: 180px;
+            margin: 5px;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.65s;
+            box-shadow: 0px 2px 4px gray;
+        }
+
+        .game-card figure {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .game-card .front {
+            background-color: #b6e6ff;
+        }
+
+        .game-card .back {
+            background-color: lightpink;
+            transform: rotateY(180deg);
+        }
+
+        @media (max-width: 800px) {
+            .game-card {
+                height: 150px;
+                width: 150px;
+            }
+        }
+
+        .game-card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        #score-board {
+            margin: 30px 0 0;
+            display: flex;
+        }
+
+        .score {
+            display: inline-block;
+            padding: 0 20px 0;
+        }
+
+        #score-board.hidden {
+            visibility: hidden;
+        }
+
+        #win-screen {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            background-color: rgba(230, 230, 250, 0.95);
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        #win-screen>* {
+            line-height: 0;
+            margin: 25px;
+        }
+
+        #win-screen.visible {
+            visibility: visible;
+            opacity: 1;
+            transition: all 0.8s;
+        }
+
+        #replay-button {
+            cursor: pointer;
+            padding: 15px;
+            margin: 10px;
+            background-color: #f0f0ff;
+            border: 1px solid white;
+            border-radius: 5px;
+            box-shadow: 0px 0px 3px white;
+        }
+
+        #replay-button:hover {
+            background-color: #f8f8ff;
+            border: 1px solid white;
+            box-shadow: 0px 0px 5px 1px white;
+        }
+
+        em {
+            font-size: 14px;
+        }
+
+        footer {
+            background-color: lightpink;
+            font-size: 13px;
+            padding: 12px;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        footer.hidden {
+            display: none;
+        }
+
+        footer a:hover {
+            color: #808080;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>MEMORY CARD GAME</h1>
+        <a href="#game-container" id="new-game-button">New Game?</a>
+    </header>
+    <section id="game-container" class="hidden">
+        <section id="game">
+            <!-- Cartes du jeu -->
+            <div id="game-card-1" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <!-- Répétition des cartes de 1 à 12 -->
+            <div id="game-card-2" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-3" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-4" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-5" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-6" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-7" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-8" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-9" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-10" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-11" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+            <div id="game-card-12" class="game-card">
+                <figure class="front"></figure>
+                <figure class="back"></figure>
+            </div>
+        </section>
+        <section id="score-board">
+            <div class="score low-score">Low Score: N/A</div>
+            <div class="score click-count">Total Clicks: 0</div>
+        </section>
+        <div id="win-screen">
+            <h3>🎯 Nailed It! 🎯</h3>
+            <div class="score click-count">Total Clicks: 0</div>
+            <div class="score low-score">Low Score:</div>
+            <a id="replay-button">Play Again?</a>
+        </div>
+    </section>
+    <footer class="hidden">
+        Coded and designed con mucho amor <i class="far fa-hand-spock"></i> by
+        <a href="https://goyanespaula.github.io/" target="_blank">Paula Goyanes</a> 2018 <i class="far fa-copyright"></i>
+    </footer>
+    <script>
+        // Script JavaScript pour le jeu de mémoire
+        var possibleCardFaces = ["&#x1F602;", "&#x1F60E;", "&#x1F60D;", "&#x1F61C;", "&#x1F643;", "&#x1F913;", "&#x1F602;", "&#x1F60E;", "&#x1F60D;", "&#x1F61C;", "&#x1F643;", "&#x1F913;"];
+        var lowScore = localStorage.getItem("lowScore") || "N/A";
+        var score = 0;
+        var flippedCards = [];
+        var matchedCards = [];
+        var locked = false;
+        var flipTimeout = 700;
+
+        // Fonction pour attribuer des emojis aléatoires aux cartes
+        function assignCardFaces($cardFaces) {
+            for (var i = 0; i < 12; i++) {
+                $($cardFaces[i]).html("<h2>" + getRandomFace() + "</h2>");
+            }
+            possibleCardFaces = ["&#x1F602;", "&#x1F60E;", "&#x1F60D;", "&#x1F61C;", "&#x1F643;", "&#x1F913;", "&#x1F602;", "&#x1F60E;", "&#x1F60D;", "&#x1F61C;", "&#x1F643;", "&#x1F913;"];
+        }
+
+        // Fonction pour obtenir un emoji aléatoire
+        function getRandomFace() {
+            var randomIndex = Math.floor(Math.random() * possibleCardFaces.length);
+            var face = possibleCardFaces[randomIndex];
+            possibleCardFaces.splice(randomIndex, 1);
+            return face;
+        }
+
+        // Fonction pour vérifier si deux cartes sont identiques
+        function areMatching(flippedCards) {
+            return flippedCards[0].html() === flippedCards[1].html();
+        }
+
+        // Fonction pour retourner les cartes non appariées
+        function hideCards(flippedCards) {
+            setTimeout(function () {
+                $(flippedCards[0]).removeClass("flipped");
+                $(flippedCards[1]).removeClass("flipped");
+                locked = false;
+            }, flipTimeout);
+        }
+
+        // Fonction pour vérifier et mettre à jour le meilleur score
+        function checkForLowScore(score, $lowScoreOutput) {
+            if (lowScore === "N/A" || score < lowScore) {
+                localStorage.setItem("lowScore", score);
+                lowScore = score;
+                $lowScoreOutput.html("<em>*new*</em> Low Score: " + score);
+            }
+        }
+
+        // Fonction pour afficher l'écran de victoire
+        function renderWinScreen($winScreen) {
+            setTimeout(function () {
+                $winScreen.addClass("visible");
+            }, 400);
+        }
+
+        // Fonction pour réinitialiser le jeu
+        function reset($lowScoreOutput, $cardFaces, $gameClicks, $gameCardElements, $winScreen, $scoreBoard) {
+            assignCardFaces($cardFaces);
+            matchedCards = [];
+            score = 0;
+            $lowScoreOutput.text("Low Score: " + lowScore);
+            $gameClicks.text("Total Clicks: " + score);
+            $winScreen.removeClass("visible");
+            $scoreBoard.removeClass("hidden");
+            $gameCardElements.removeClass("flipped");
+        }
+
+        $(document).ready(function () {
+            var $newGameButton = $("#new-game-button");
+            var $gameContainer = $("#game-container");
+            var $gameCardElements = $(".game-card");
+            var $cardFaces = $(".game-card .back");
+            var $scoreBoard = $("#score-board");
+            var $gameClicks = $(".click-count");
+            var $lowScoreOutput = $(".low-score");
+            var $winScreen = $("#win-screen");
+            var $replay = $("#replay-button");
+            var $footer = $("footer");
+
+            assignCardFaces($cardFaces);
+
+            // Événement pour commencer une nouvelle partie
+            $newGameButton.on("click", function () {
+                $gameContainer.removeClass("hidden");
+                $footer.removeClass("hidden");
+            });
+
+            // Événement pour gérer le clic sur les cartes
+            $gameContainer.on("click", ".front, .front h2", function (event) {
+                if (event.target != this || locked) return;
+
+                var $card = $(event.target).closest(".game-card");
+
+                if (!$card.hasClass("flipped")) {
+                    $card.addClass("flipped");
+                    flippedCards.push($card);
+                    score++;
+                    $gameClicks.text("Total Clicks: " + score);
+                }
+
+                if (flippedCards.length === 2) {
+                    if (areMatching(flippedCards)) {
+                        matchedCards.push(flippedCards[0], flippedCards[1]);
+                    } else {
+                        locked = true;
+                        hideCards(flippedCards);
+                    }
+                    flippedCards = [];
+                }
+
+                if (matchedCards.length === $gameCardElements.length) {
+                    checkForLowScore(score, $lowScoreOutput);
+                    $scoreBoard.addClass("hidden");
+                    renderWinScreen($winScreen);
+                }
+            });
+
+            // Événement pour rejouer
+            $replay.on("click", function () {
+                reset($lowScoreOutput, $cardFaces, $gameClicks, $gameCardElements, $winScreen, $scoreBoard);
+            });
+
+            // Défilement fluide
+            $("a").on('click', function (event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 600);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
