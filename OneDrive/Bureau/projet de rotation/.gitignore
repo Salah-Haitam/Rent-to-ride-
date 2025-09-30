@@ -1,0 +1,17 @@
+# Fichiers binaires compilés
+bin/
+obj/
+*.exe
+*.obj
+*.tds
+*.map
+*.ilk
+*.pdb
+
+# Fichiers temporaires Code::Blocks
+*.depend
+*.layout
+
+# Logs et temporaires
+*.log
+*.tmp
