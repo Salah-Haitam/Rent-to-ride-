@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="formulaire.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RR | Formulaire</title>
+    <link class="t" rel="icon" href="téléchargement.png">
+    <script src="formulaire.js"></script>
+</head>
+<body>
+    <header>
+        <h1>FORMULAIRE</h1>
+    </header>
+
+    <nav>
+        <ul>
+           <li>
+            <a href="accueil.html" class="btn2" target="_blank">
+             <span class="spn2">
+                Accueil
+             </span>
+            </a>
+            </li>
+           <li>
+            <a href="moto dispo.html" class="btn2"  target="_blank">
+                <span class="spn2">
+                    Moto disponible
+                 </span>
+            </a>
+        </li>
+        <li>
+            <a href="Contrat de location.pdf" class="btn2"  target="_blank">
+                <span class="spn2">
+                  Contrat 
+                 </span>
+            </a>
+        </li>
+        <li>
+            <a href="formulare.html" class="btn2"  target="_blank">
+                <span class="spn2">
+              formulaire
+                 </span>
+            </a>
+        </li>
+        </ul>
+    </nav>
+    
+    <main>
+        <form id="mainForm" method="get" action=""> 
+            <div class="form-group">
+                <label for="nom">Votre Nom:</label>
+                <input type="text" id="nom" name="nom" placeholder="ex : Jaafar">
+                <small class="error-message" id="error-nom"></small>
+            </div>
+            <div class="form-group">
+                <label for="prenom">Votre Prénom:</label>
+                <input type="text" id="prenom" name="prenom" placeholder="ex : Jaafar" >
+                <small class="error-message" id="error-prenom"></small>
+            </div>
+            <div class="form-group">
+                <label>Votre Sexe:</label>
+                <div class="radio-group">
+                    <input type="radio" id="male" name="sexe" value="male">
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="sexe" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <small class="error-message" id="error-sexe"></small>
+            </div>
+            <div class="form-group">
+                <label for="age">Votre Âge:</label>
+                <input type="number" id="age" name="age" min="18">
+                <small class="error-message" id="error-age"></small>
+            </div>
+            <div class="form-group">
+                <label for="email">Votre Email:</label>
+                <input type="email" id="email" name="email" placeholder="jaafar@gmail.com" >
+                <small class="error-message" id="error-email"></small>
+            </div>
+            <div class="form-group">
+                <label for="password">Votre Mot de Passe:</label>
+                <input type="password" id="password" name="password" >
+                <small class="error-message" id="error-password"></small>
+            </div>
+            <div class="form-group">
+                <label for="range">Votre:</label>
+                <input type="range" id="range" name="range">
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" >
+            </div>
+            <div class="form-group">
+                <label for="moto">CHOISISSEZ VOTRE MOTO:</label>
+                <select id="moto" name="moto">
+                    <option value="S1000RR">S1000RR</option>
+                    <option value="H2R">H2R</option>
+                    <option value="BRABUS R">BRABUS-1300R</option>
+                    <option value="YAMAHA">YAMAHA R1</option>
+                    <option value="YAMAHA">KTM</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="submit">Envoyer</button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

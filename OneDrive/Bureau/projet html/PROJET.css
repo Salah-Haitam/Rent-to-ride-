@@ -1,0 +1,137 @@
+table{
+    border-collapse: collapse;
+    margin: auto;
+    display: flex;
+    justify-content: left;
+    align-items:left;
+    overflow: hidden;
+}
+td, th{
+  padding:15px;
+  border:1px solid rgb(229, 255, 0);
+
+}
+header
+{
+    text-align: center; 
+    font-size: xx-large;
+   
+}
+.image 
+{
+    height: 150px;
+ }
+
+.PDD
+{
+padding: 25px;
+text-align: center;
+}
+
+nav {
+   
+    text-align: center;
+    font-size: 50px;
+    border-bottom: 3  transparent solid;
+    border-top: 3px  transparent solid;
+    border-left: 3px transparent solid;
+    border-right: 3px transparent solid;
+}
+ 
+  body{
+    background-color: darkslategray;
+  }
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: darkslategrey;
+    margin-bottom: 100px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    padding: 10;
+  }
+  
+  nav ul li {
+    display: inline;
+    margin: 0 10px;
+    padding: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: darkolivegreen;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  nav ul li a:hover {
+    color: #110066;
+  }
+*{
+    .btn2 {
+      position: relative;
+      display: inline-block;
+      padding: 15px 30px;
+      border: 2px solid #fefefe;
+      text-transform: uppercase;
+      color: #fefefe;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 20px;
+      transition: 0.3s;
+    }
+    
+    .btn2::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% - -2px);
+      background-color: #212121;
+      transition: 0.3s ease-out;
+      transform: scaleY(1);
+    }
+    
+    .btn2::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: calc(100% + 4px);
+      height: calc(100% - 50px);
+      background-color: #212121;
+      transition: 0.3s ease-out;
+      transform: scaleY(1);
+    }
+    
+    .btn2:hover::before {
+      transform: translateY(-25px);
+      height: 0;
+    }
+    
+    .btn2:hover::after {
+      transform: scaleX(0);
+      transition-delay: 0.15s;
+    }
+    
+    .btn2:hover {
+      border: 2px solid #fefefe;
+    }
+    
+    .btn2 span {
+      position: relative;
+      z-index: 3;
+    }
+    
+    button {
+      text-decoration: none;
+      border: none;
+      background-color: transparent;
+    }
+    
+  } 
+   

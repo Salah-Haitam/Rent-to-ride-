@@ -1,0 +1,117 @@
+
+body{ 
+ 
+background-image: url(mpa-pic2.jpeg);
+color:darkolivegreen;
+background-size:cover ;       
+  background-position:bottom;
+  background-attachment: fixed;
+  
+}
+header
+{
+    text-align: center; 
+    font-size: xx-large;
+   
+}
+.image {
+    height: 100px;
+    height: auto;
+
+ }
+nav 
+{
+padding: 100px 0;
+text-align: center;
+font-size: 50px;
+border-bottom: 3px  transparent solid;
+border-top: 3px  transparent solid;
+border-left: 3px transparent solid;
+border-right: 3px transparent solid;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+}
+  
+
+  nav ul li {
+    display: inline;
+    margin: 0 10px;
+    padding: 10px;
+  }
+  
+  nav ul li a {
+    text-decoration: none;
+    color: darkolivegreen;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  nav ul li a:hover {
+    color: #110066;
+  }
+ *{
+  .btn2 {
+    position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    border: 2px solid #fefefe;
+    text-transform: uppercase;
+    color: #fefefe;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  
+  .btn2::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - -2px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+  
+  .btn2::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% - 50px);
+    background-color: #212121;
+    transition: 0.3s ease-out;
+    transform: scaleY(1);
+  }
+  
+  .btn2:hover::before {
+    transform: translateY(-25px);
+    height: 0;
+  }
+  
+  .btn2:hover::after {
+    transform: scaleX(0);
+    transition-delay: 0.15s;
+  }
+  
+  .btn2:hover {
+    border: 2px solid #fefefe;
+  }
+  
+  .btn2 span {
+    position: relative;
+  
+  }
+  
+  button {
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+  }
+  
+} 
+ 

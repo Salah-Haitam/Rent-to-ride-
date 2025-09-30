@@ -1,0 +1,251 @@
+
+  .ribbon {
+    background-color: rgb(1, 66, 157)00;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    padding: 10px;
+    width: 10000px;
+    height:auto;
+  
+  }
+  body
+  {
+    background-image:url(mpa-pic2.jpeg);
+    color: #0F2027;
+    background-size:cover ;       
+    background-position:bottom;
+    background-attachment: fixed;
+  }
+  aside{
+    text-align:right;
+    width: 5in;
+    height: 3.5in;
+    background-color: #01e056;
+   
+  
+  }
+  .gml
+  {
+    font-size: 250%;
+  }
+  h3{
+  
+    width: 50%;
+  }
+  .category {
+    margin-right: 10px;
+    padding: 5px;
+    text-decoration-style: none;
+  }
+  .center{
+    text-align: center;
+  }
+  .image {
+    height: 50px;
+    margin-left: 10px;
+  }
+  .download-button {
+    position: relative;
+    border-width: 0;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    z-index: 1;
+   }
+   
+   .download-button .docs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    min-height: 40px;
+    padding: 0 10px;
+    border-radius: 4px;
+    z-index: 1;
+    background-color: #242a35;
+    border: solid 1px #e8e8e82d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+   }
+   
+   .download-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   }
+   
+   .download {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+    margin: 0 auto;
+    z-index: -1;
+    border-radius: 4px;
+    transform: translateY(0%);
+    background-color: #01e056;
+    border: solid 1px #01e0572d;
+    transition: all .5s cubic-bezier(0.77, 0, 0.175, 1);
+   }
+   
+   .download-button:hover .download {
+    transform: translateY(100%)
+   }
+   
+   .download svg polyline,.download svg line {
+    animation: docs 1s infinite;
+   }
+   
+   @keyframes docs {
+    0% {
+     transform: translateY(0%);
+    }
+   
+    50% {
+     transform: translateY(-15%);
+    }
+   
+    100% {
+     transform: translateY(0%);
+    }
+   }
+header{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ background-color: #01e056;
+}
+
+.BV
+{
+color:#0F2027;
+} 
+.LINK
+{
+    text-decoration: none;
+    color:#0F2027;
+}
+.L
+{
+color:rgb(45, 0, 149);
+}
+input
+{
+  padding: 10px;
+  margin: 10px;
+}
+.coolinput {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  max-width: 240px;
+}
+
+
+.A
+{
+color:rgb(255, 68, 0);
+}
+
+.t
+{
+    border-top:solid silver ;
+    border-bottom:solid silver;
+    border-left:dashed gold;
+    border-right:dashed gold ;
+ border-radius: 51% 49% 53% 47% / 54% 51% 49% 46% ;   
+}
+
+
+.box img{
+  width: 100%;
+  height: auto;
+  -ms-zoom-animation: default;
+ 
+}
+.box{
+  background-color:#203A43;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 50%;
+}
+
+button{
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+button {
+  color: white;
+  text-decoration: none;
+  font-size: 25px;
+  border: none;
+  background: none;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+button::before {
+  margin-left: auto;
+}
+
+button::after, button::before {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #f44336;
+  display: block;
+  transition: 0.5s;
+}
+
+button:hover::after, button:hover::before {
+  width: 100%;
+}
+  button:hover{
+   
+
+    transform: scale(1.5);
+}
+
+.box:hover{
+  transform: rotate(20deg);
+ transform:scale(1.5);
+ /*transform: rotateY(180deg);
+transition:  0.5ms  ease-in;
+transition:  0.5ms ease-out;
+*/
+
+}
+.container{
+    display: flex;
+justify-content: space-between;
+gap: 20px;
+}
+.description {
+  background-color: cadetblue;
+/*border-radius:  ;*/ 
+  position: absolute;
+  top: 0;
+  left: 0;
+  /*background-color: rgba(0, 0, 0, 0.5);  Couleur de fond semi-transparente */
+  color: #0F2027;
+  padding: 10px;
+   /*transform: rotate(-45deg); Rotation de la description dans le sens inverse de l'image */
+  transform-origin: top left; /* Définir l'origine de la transformation */
+  display: none; /* Masquer la description par défaut */
+  
+}
+
+.container:hover .description {
+  display: block; /* Afficher la description au survol du conteneur */
+}
